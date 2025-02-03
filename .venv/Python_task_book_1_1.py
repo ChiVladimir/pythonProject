@@ -1,3 +1,5 @@
+# https://code.mu/ru/python/tasker/stager/
+
 x = int(input())
 if x < 0:
     print("Negative number")
