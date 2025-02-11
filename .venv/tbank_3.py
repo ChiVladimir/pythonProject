@@ -1,13 +1,17 @@
-count_of_people= int(input())
+num_of_empl, time_of_depart  = map(int, input().split('  '))
+floor_numbers = [int(n) for n in input().split('  ')]
+empl_who_leave = int(input())
 
 
-print((count_of_people - 1).bit_length())
-print(count_of_people.bit_length() - (count_of_people & (count_of_people - 1) == 0))
+#print(floor_numbers, empl_who_leave, num_of_empl, time_of_depart)
 
+if floor_numbers[-1] - floor_numbers[empl_who_leave-1] <= time_of_depart:
+    print(floor_numbers[-1] - floor_numbers[0])
 
-count_of_cuts = 0
-p = 1
-while p < count_of_people:
-    count_of_cuts += 1
-    p *= 2
-print(count_of_cuts)
+elif floor_numbers[empl_who_leave-1] - floor_numbers[0] <= time_of_depart:
+    print(floor_numbers[-1] - floor_numbers[0])
+
+else:
+    res1 = (floor_numbers[empl_who_leave-1] - floor_numbers[0]) + (floor_numbers[-1] - floor_numbers[0])
+    res2 = (floor_numbers[-1] - floor_numbers[empl_who_leave-1]) + (floor_numbers[-1] - floor_numbers[0])
+    print(min([res1, res2]))
