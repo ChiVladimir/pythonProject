@@ -1,5 +1,5 @@
-num_of_empl, time_of_depart  = map(int, input().split('  '))
-floor_numbers = [int(n) for n in input().split('  ')]
+num_of_empl, time_of_depart  = map(int, input().split())
+floor_numbers = [int(n) for n in input().split()]
 empl_who_leave = int(input())
 
 
