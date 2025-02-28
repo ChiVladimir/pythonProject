@@ -2,12 +2,9 @@ import numpy as np
 
 def solve(solution):
     A, D = solution.params
-    Ax, Ay, Bx, By, Cx, Cy, Dx, Dy = solution.values
+    Ax, Ay, Bx, By, _, _, Dx, Dy = solution.values
 
-    m = Coords_Grid(np.array([
-        [A - Bx + Ax, -Dx + Ax],
-        [-By + Ay, D - Dy + Ay]
-    ]))
+    m = Coords_Grid(np.array([[A - Bx + Ax, -Dx + Ax], [-By + Ay, D - Dy + Ay]]))
 
     x, y = m.solve_eq(Ax, Ay)
     return x * A, y * D
@@ -27,10 +24,7 @@ class Coords_Grid:
 
     def solve_eq(self, x, y):
         d0 = self.det()
-        return (
-            self.replace_col(0, x, y).det() / d0,
-            self.replace_col(1, x, y).det() / d0
-        )
+        return (self.replace_col(0, x, y).det() / d0, self.replace_col(1, x, y).det() / d0)
 
 class Inputs:
     def __init__(self, params, values):
@@ -41,10 +35,7 @@ class Inputs:
 room_dimensions = list(map(float, input().split()))
 plan_verts = list(map(float, input().split()))
 
-inpts = Inputs(
-    params=(room_dimensions[0], room_dimensions[1]),
-    values=plan_verts
-)
+inpts = Inputs(params=(room_dimensions[0], room_dimensions[1]), values=plan_verts)
 
 x, y = solve(inpts)
 print(f"{x:.4f} {y:.4f}")
