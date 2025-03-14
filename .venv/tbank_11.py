@@ -11,8 +11,8 @@ def power(base, exp, mod): # Функция возведения в степен
         exp //= 2
     return res
 
-#input_data = [int(n) for n in input().split()]
-input_data = input().split(" ")
+input_data = [int(n) for n in input().split()]
+
 
 l = int(input_data[0])
 r = int(input_data[1])
