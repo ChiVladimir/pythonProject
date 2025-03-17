@@ -1,7 +1,16 @@
+from http.cookiejar import uppercase_escaped_char
+
 my_list = [1, 3, 44, 345, 67, 888, 9999]
 res = []
+n = 0
 for i in range(len(my_list)):
-    print ("3" in str(my_list[i]))
+    if "3" in str(my_list[i]):
+        n += 1
+
+if n == (len(my_list)):
+    print ("all elements include 3")
+else:
+    print("not all elements include 3")
 
 my_str = "1, 3, 44, 345, 67, 888, 9999"
 
@@ -14,46 +23,15 @@ my_str = 'kebab-case'
 res_str = my_str.split('-')
 
 print("_".join(res_str))
-#
-# txt1 = '12345'
-# txt2 = '45678'
-#
-# print(list(txt1))
-# overlap = set(list(txt1)) & set(list(txt2))
-# print("".join(sorted(overlap)))
-#
-# my_str = 'a bc def ghij'
-# res = []
-#
-# for i in range(len(my_str.split(' '))):
-#     if len(my_str.split(' ')[i]) <= 3:
-#         res.append(my_str.split(' ')[i].upper())
-#     else: res.append(my_str.split(' ')[i])
-# print(" ".join(res))
-
-# my_list = [1, 3, 44, 345, 67, 888, 9999]
-# res = []
-# for i in range(len(my_list)):
-#     if len(str(my_list[i])) != 3:
-#         res.append(my_list[i])
-# print(res)
-#
-# num1 = "12345"
-# num2 = "12.34"
-# print(num1.isdigit())
-# print(num2.isdigit())
-#
-# num = 1234500
-# flag = "no"
-# for i in range(len(str(num))):
-#     if int(str(num)[i]) == 0:
-#         flag = "yes"
-# print(flag)
-#
-# list1 = [1, 2, 3, 4, 5]
-# list2 = [1, 2, 3]
-#
-# difference = list(set(list1) - set(list2))
-# print(difference)
 
 
+
+my_str = 'camelCaseCaseCaseCase'
+my_list = []
+for i in range(len(my_str)):
+    if my_str[i].isupper():
+        my_list.append("_" + my_str[i].lower())
+    else:
+        my_list.append(my_str[i])
+
+print("".join(my_list))

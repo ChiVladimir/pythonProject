@@ -1,3 +1,5 @@
+import time
+
 def inverse_num_mod(a, p): # Функция для определения обратного по модулю p, по тз - малая теорема Ферма: a^(p-2) % p
     return power(a, p - 2, p)
 
@@ -13,6 +15,7 @@ def power(base, exp, mod): # Функция возведения в степен
 
 input_data = [int(n) for n in input().split()]
 
+start_time = time.time()
 
 l = int(input_data[0])
 r = int(input_data[1])
@@ -42,3 +45,5 @@ sum_result += inverse_num
 
 print(sum_result % p)  # результат - сумма обратных чисел по модулю p
 
+finish_time = time.time()
+print(f'Time: {(finish_time-start_time)} seconds')
